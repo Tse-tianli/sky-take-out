@@ -19,4 +19,6 @@ public interface EmployeeService {
     void createEmployee(EmployeeDTO employeeDTO);
 
     PageResult pageQuery(EmployeePageQueryDTO PageQueryDTO);
+
+    void accountAvailableOrNot(Integer status, Long id);
 }
