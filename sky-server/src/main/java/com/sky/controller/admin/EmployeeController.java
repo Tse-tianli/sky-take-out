@@ -97,4 +97,21 @@ public class EmployeeController {
         employeeService.accountAvailableOrNot(status, id);
         return Result.success();
     }
+
+    @GetMapping("/{id}")
+    @ApiOperation(value = "员工信息查询")
+    public Result<Employee> getById(@PathVariable Long id) {
+        log.info("员工信息查询：{}", id);
+        Employee employee = employeeService.getById(id);
+
+        return Result.success(employee);
+    }
+
+    @PutMapping
+    @ApiOperation(value = "编辑员工信息")
+    public Result update(@RequestBody EmployeeDTO employeeDTO) {
+        log.info("员工信息修改：{}", employeeDTO);
+        employeeService.update(employeeDTO);
+        return Result.success();
+    }
 }
