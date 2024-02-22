@@ -4,10 +4,7 @@ import com.github.pagehelper.Page;
 import com.sky.dto.DishPageQueryDTO;
 import com.sky.entity.Dish;
 import com.sky.vo.DishVO;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -27,7 +24,6 @@ public interface DishMapper {
 
     Page<DishVO> pageQuery(DishPageQueryDTO dishPageQueryDTO);
 
-    @Delete("delete from dish where id in (#{ids})")
     void deleteByIds(List<Long> ids);
 
     @Select("select * from dish where id = #{id}")
@@ -35,4 +31,8 @@ public interface DishMapper {
 
     @Delete("delete from dish where id = #{id}")
     void deleteById(Long id);
+
+    DishVO getByIdVO(Long id);
+
+    void update(Dish dish);
 }
